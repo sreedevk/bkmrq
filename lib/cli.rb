@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
 # frozen_string_literal: true
+
+APP_ROOT = File.dirname(__FILE__)
 require 'optparse'
 require 'optparse/time'
+require_relative "#{File.dirname(__FILE__)}/bkmrq"
 
 class BkmrqCli
   MAN = <<-MAN

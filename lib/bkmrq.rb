@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative './docs_template'
+require_relative "#{File.dirname(__FILE__)}/docs_template"
 
 # Bookmarks Document Generator
 class Bkmrq
-  APP_ROOT               = ::File.dirname(__FILE__)
   USER_HOME              = ENV.fetch('HOME', ::File.join('home', ENV['USER']))
   BOOKMARKS_REPO         = ENV.fetch('BKMRQ_BOOKMARKS_REPO', ::File.join(USER_HOME, '.bookmarks'))
   BLOCKLIST              = ENV.fetch('BKMRQ_BLOCKLIST', '(pdf|google|file:)').split(',').map(&:strip)
