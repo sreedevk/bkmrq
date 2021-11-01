@@ -55,7 +55,8 @@ def create_package(target)
   sh "mkdir #{package_dir}/lib/ruby"
   sh "tar -xzf bin/traveling-ruby-#{TRAVELING_RUBY_VERSION[target]}-#{target}.tar.gz -C #{package_dir}/lib/ruby"
   sh "cp bin/wrapper.sh #{package_dir}/#{PACKAGE_NAME}"
-  return unless ENV['DIR_ONLY']
+
+  return if ENV['DIR_ONLY']
 
   sh "tar -czf releases/#{package_dir}.tar.gz #{package_dir}"
   sh "rm -rf #{package_dir}"
