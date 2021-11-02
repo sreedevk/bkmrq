@@ -6,7 +6,6 @@ require_relative "#{File.dirname(__FILE__)}/docs_template"
 # Bookmarks Document Generator
 class Bkmrq
   USER_HOME              = ENV.fetch('HOME', ::File.join('home', ENV['USER']))
-  BOOKMARKS_REPO         = ENV.fetch('BKMRQ_BOOKMARKS_REPO', ::File.join(USER_HOME, '.bookmarks'))
   BLOCKLIST              = ENV.fetch('BKMRQ_BLOCKLIST', '(pdf|google|file:)').split(',').map(&:strip)
 
   OUTPUT_FILE_NAME       = ENV.fetch('BKMRQ_OUTPUT_FILE_NAME', 'bkmrq_export_{timestamp}.md')
@@ -21,6 +20,9 @@ class Bkmrq
       'Bookmarks'
     )
   )
+
+  def initialize
+  end
 
   def export!
     write_template
