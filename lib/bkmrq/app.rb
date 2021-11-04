@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative 'docs_template'
-require_relative 'browser_config'
+require 'bkmrq/docs_template'
+require 'bkmrq/browser_config'
 
 module Bkmrq
   # Bookmarks Document Generator

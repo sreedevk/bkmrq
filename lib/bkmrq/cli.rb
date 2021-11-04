@@ -3,10 +3,8 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require 'pry'
-
-require_relative 'bkmrq'
-require_relative 'manual'
+require 'bkmrq/app'
+require 'bkmrq/manual'
 
 module Bkmrq
   # Cli

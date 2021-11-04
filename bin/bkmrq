@@ -1,5 +1,6 @@
-#!/bin/bash
-set -e
+#!/usr/bin/ruby
+# frozen_string_literal: true
 
-SELFDIR=$(dirname "$0")
-ruby "${SELFDIR}/../lib/app.rb" "$*"
+require 'bkmrq/cli'
+
+Bkmrq::Cli.new(ARGV)
