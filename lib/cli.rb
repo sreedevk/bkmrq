@@ -2,10 +2,8 @@
 
 # frozen_string_literal: true
 
-APP_ROOT = File.dirname(__FILE__)
 require 'optparse'
-require 'pry'
-require_relative "#{File.dirname(__FILE__)}/bkmrq"
+require_relative 'bkmrq'
 
 # Cli
 class BkmrqCli
@@ -18,7 +16,6 @@ class BkmrqCli
 
   def initialize(args)
     @opts = {}
-    binding.pry
     option_parser.parse!(args&.split(/\s+/), into: @opts)
     p @opts
   end

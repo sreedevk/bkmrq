@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative "#{File.dirname(__FILE__)}/docs_template"
+require_relative 'docs_template'
 
 # Bookmarks Document Generator
 class Bkmrq
@@ -20,9 +20,6 @@ class Bkmrq
       'Bookmarks'
     )
   )
-
-  def initialize
-  end
 
   def export!
     write_template

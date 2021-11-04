@@ -2,5 +2,4 @@
 set -e
 
 SELFDIR=$(dirname "$0")
-SELFDIR=$(cd "${SELFDIR}" && pwd)
-ruby -s -r"${SELFDIR}/../lib/cli.rb" -e "BkmrqCli.new($@)"
+ruby "${SELFDIR}/../lib/bkmrq.rb" "$*"
