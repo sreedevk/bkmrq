@@ -2,4 +2,4 @@
 
 require_relative 'cli'
 
-Bkmrq::Cli.new(ARGV[0])
+Bkmrq::Cli.new(ARGV)
