@@ -45,7 +45,7 @@ class Bkmrq
   end
 
   def write_template
-    [:title, :subtitle, :header_image, :description]
+    %i[title subtitle header_image description]
       .map(&DocsTemplate.method(:public_send))
       .map(&output_file.method(:write))
   end
@@ -54,13 +54,12 @@ class Bkmrq
     return if skip_export?(marqs)
 
     output_file.write(generate_formatted_entity(marqs, level))
-
     marqs.fetch('children', []).empty? ||
       marqs['children'].map { |child| export(child, level + 1) }
   end
 
   def skip_export?(bookmark_section)
-    [bookmarks['name'], bookmarks['name']].any? do |meta|
+    [bookmark_section['name'], bookmark_section['name']].any? do |meta|
       BLOCKLIST.any? { |pattern| !meta&.match(pattern).nil? }
     end
   end
