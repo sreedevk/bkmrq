@@ -17,7 +17,6 @@ class BkmrqCli
   def initialize(args)
     @opts = {}
     option_parser.parse!(args&.split(/\s+/), into: @opts)
-    p @opts
   end
 
   def option_parser
