@@ -68,7 +68,6 @@ module Bkmrq
 
     def generate_bookmark_title(bookmark, level)
       [
-        ' ' * level,
         '#' * level,
         "#{bookmark['name']}\n"
       ].join(' ')
@@ -76,7 +75,7 @@ module Bkmrq
 
     def generate_bookmark_link(bookmark, level)
       [
-        ' ' * level,
+        ' ' * (level % 2),
         "[#{bookmark['name']}](#{bookmark['url']})  \n"
       ].join(' ')
     end
