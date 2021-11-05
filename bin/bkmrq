@@ -2,5 +2,4 @@
 # frozen_string_literal: true
 
 require 'bkmrq/cli'
-
 Bkmrq::Cli.new(ARGV)

@@ -21,7 +21,7 @@ module Bkmrq
         # Option Parsing
         Bkmrq::Manual.options_specs.map do |option_spec|
           option_key = option_spec.pop
-          args.on(*option_spec) { |input| @opts.send(:[]=, option_key, input) }
+          args.on(*option_spec) { |input| @opts[option_key] = input }
         end
 
         # Manual Printing

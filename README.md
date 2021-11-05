@@ -16,6 +16,4 @@ Running Bkmrq requires ruby installed (>= 3.0.0)
 ```
 
 # Roadmap
-
-- Move to [Travelling Ruby](https://github.com/FooBarWidget/traveling-ruby)
 - Support more browsers
