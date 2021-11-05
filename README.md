@@ -12,7 +12,8 @@ Running Bkmrq requires ruby installed (>= 3.0.0)
 # Usage
 
 ```bash
-  
+  bkmrq -H              # prints out help  
+  bkmrq -B <browser>    # currently supported browsers - chromium | brave
 ```
 
 # Roadmap
