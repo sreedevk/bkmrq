@@ -15,4 +15,9 @@ namespace :bkmrq do
   task :uninstall do
     sh('gem uninstall bkmrq')
   end
+
+  desc 'clean generated files'
+  task :clean do
+    sh('rm -rf bkmrq*.md')
+  end
 end

@@ -11,13 +11,17 @@ module Bkmrq
   class Cli
     def initialize(args)
       @opts = {}
-      option_parser.parse!(sanitize_args(args), into: @opts)
+      option_parser.parse!(default_args(sanitize_args(args)), into: @opts)
+      init_app if opts_valid?
+    end
+
+    private
+
+    def init_app
       Bkmrq::App.new(
         **@opts.slice(*Bkmrq::Manual.options_specs.map(&:last))
       ).export!
     end
-
-    private
 
     def option_parser
       @option_parser ||= OptionParser.new do |args|
@@ -35,6 +39,14 @@ module Bkmrq
 
     def sanitize_args(args)
       args.reject(&:empty?).map(&:scrub).map(&:split).flatten
+    end
+
+    def default_args(args)
+      args.empty? ? ['-H'] : args
+    end
+
+    def opts_valid?
+      !@opts.key?(:help)
     end
   end
 end
