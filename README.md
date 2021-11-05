@@ -21,3 +21,4 @@ An example markdown file generated using this gemfile is available [here](https:
 
 # Roadmap
 - Support more browsers
+- Add windows & Mac support
