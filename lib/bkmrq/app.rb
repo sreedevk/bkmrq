@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
+require 'fileutils'
 require 'bkmrq/docs_template'
 require 'bkmrq/browser_config'
 
@@ -9,8 +10,9 @@ module Bkmrq
   class App
     BLOCKLIST = ENV.fetch('BKMRQ_BLOCKLIST', '(pdf|google|file:)').split(',').map(&:strip)
 
-    def initialize(browser: :brave, bookmarks_input: nil)
-      @bookmarks_input = bookmarks_input || Bkmrq::BROWSER_CONFIG.dig(browser, :bookmark_file_path)
+    def initialize(browser: :brave, input_file: nil, output_path: nil, edit: false)
+      @bookmarks_input = input_file  || Bkmrq::BROWSER_CONFIG.dig(browser, :bookmark_file_path)
+      @output_path     = output_path || FileUtils.pwd
     end
 
     def export!
@@ -25,7 +27,7 @@ module Bkmrq
 
     def output_file
       @output_file ||= ::File.open(
-        "bkmrq_export_#{String(Integer(Time.now))[0..-2]}.md",
+        File.join(@output_path, "bkmrq_export_#{String(Integer(Time.now))[0..-2]}.md"),
         'w+'
       )
     end
