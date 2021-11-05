@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib')) # this line should be removed in prod
-
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'bkmrq/cli'
 Bkmrq::Cli.new(ARGV)

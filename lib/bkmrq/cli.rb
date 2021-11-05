@@ -13,9 +13,7 @@ module Bkmrq
       @opts = {}
       option_parser.parse!(sanitize_args(args), into: @opts)
       Bkmrq::App.new(
-        **@opts.slice(
-          Bkmrq::Manual.options_specs.map(&:last)
-        )
+        **@opts.slice(*Bkmrq::Manual.options_specs.map(&:last))
       ).export!
     end
 

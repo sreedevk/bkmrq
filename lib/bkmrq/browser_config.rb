@@ -17,7 +17,8 @@ module Bkmrq
   }.freeze
 
   BROWSER_CONFIG = {
-    brave: BRAVE_BROWSER_CONFIG,
-    chrome: CHROME_BROWSER_CONFIG
+    'brave' => BRAVE_BROWSER_CONFIG,
+    'chrome' => CHROME_BROWSER_CONFIG,
+    'chromium' => CHROME_BROWSER_CONFIG
   }.freeze
 end

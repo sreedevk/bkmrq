@@ -26,7 +26,8 @@ module Bkmrq
         '-B BROWSER',
         '--browser BROWSER',
         String,
-        'Browser (Loads Default Configs)', :browser
+        'Browser (Loads Default Configs)',
+        :browser
       ]
     end
 

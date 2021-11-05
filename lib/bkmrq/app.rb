@@ -10,7 +10,7 @@ module Bkmrq
   class App
     BLOCKLIST = ENV.fetch('BKMRQ_BLOCKLIST', '(pdf|google|file:)').split(',').map(&:strip)
 
-    def initialize(browser: :brave, input_file: nil, output_path: nil, edit: false)
+    def initialize(browser: nil, input_file: nil, output_path: nil, edit: false)
       @bookmarks_input = input_file  || Bkmrq::BROWSER_CONFIG.dig(browser, :bookmark_file_path)
       @output_path     = output_path || FileUtils.pwd
     end
