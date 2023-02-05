@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'json'
+require 'Oj'
 require 'fileutils'
 require 'bkmrq/docs_template'
 require 'bkmrq/browser_config'
@@ -34,7 +34,7 @@ module Bkmrq
 
     def bookmarks
       @bookmarks ||= ::File.open(@bookmarks_input, 'r') do |file|
-        JSON.parse(file.read)['roots']
+        Oj.load(file.read)['roots']
       end
     end
 

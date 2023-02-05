@@ -1,6 +1,7 @@
-#!/usr/bin/ruby
+#!/home/sreedev/.asdf/shims/ruby
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'bkmrq/cli'
-Bkmrq::Cli.new(ARGV)
+
+require 'bkmrq'
+Bkmrq.init
