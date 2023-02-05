@@ -1,4 +1,4 @@
-#!/home/sreedev/.asdf/shims/ruby
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
