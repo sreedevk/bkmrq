@@ -5,7 +5,7 @@ module Bkmrq
   require_relative './extractors/extractors'
   require_relative './parsers/parsers'
   require_relative './filter'
-  require_relative './formatter'
+  require_relative './formatters/formatters'
   require_relative './writer'
 
   # Application Core
@@ -20,7 +20,7 @@ module Bkmrq
       Bkmrq::Extractors.run(opts)
                        .then { |extracted_file| Bkmrq::Parsers.run(extracted_file, opts) }
                        .then { |parsed_file| Bkmrq::Filter.run(parsed_file, opts) }
-                       .then { |filtered_bookmarks| Bkmrq::Formatter.run(filtered_bookmarks, opts) }
+                       .then { |filtered_bookmarks| Bkmrq::Formatters.run(filtered_bookmarks, opts) }
                        .then { |formatted_bookmarks| Bkmrq::Writer.run(formatted_bookmarks, opts) }
     end
   end

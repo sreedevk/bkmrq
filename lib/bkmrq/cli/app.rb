@@ -8,11 +8,9 @@ module Bkmrq
     # Cli Application Interface
     class App
       def self.run!
-        Bkmrq::Cli::ArgParser
-          .new
-          .call
-          .then { |app_opts| Bkmrq::Application.new(opts: app_opts) }
-          .then(&:export!)
+        Bkmrq::Application
+          .new(opts: Bkmrq::Cli::ArgParser.parse!)
+          .export!
       end
     end
   end

@@ -8,36 +8,44 @@ module Bkmrq
   module Cli
     # Argument Parser
     module ArgParser
-      def self.filepath_opt(parser, options)
+      def self.assign_or_raise_arg(options, key, value)
+        raise OptionParser::MissingArgument if value.blank?
+
+        options[key] = value
+      end
+
+      def self.filepath_opt(parser)
         parser.on(
-          '--to=FILEPATH',
-          '-oFILEPATH',
+          '-o',
+          '--to [FILEPATH]',
           'save the export file to <FILEPATH>'
-        ) { |filepath| options[:filepath] = filepath }
+        )
       end
 
-      def self.browser_opt(parser, options)
+      def self.browser_opt(parser)
         parser.on(
-          '--browser=BROWSER',
-          '-bBROWSER',
+          '-b',
+          '--browser [BROWSER]',
+          %i[chrome chromium brave firefox safari opera],
           'export bookmarks from <BROWSER>'
-        ) { |browser| options[:browser] = browser }
+        )
       end
 
-      def self.format_opt(parser, options)
+      def self.format_opt(parser)
         parser.on(
-          '--format=FILEFORMAT',
-          '-fFILEFORMAT',
+          '-f',
+          '--format [FILEFORMAT]',
+          %i[markdown json csv html],
           'export bookmarks to <FORMAT> File.'
-        ) { |fileformat| options[:format] = fileformat }
+        )
       end
 
-      def self.exclude_patterns_opt(parser, options)
+      def self.exclude_patterns_opt(parser)
         parser.on(
-          '--exclude=XPATTERNS',
-          '-xXPATTERNS',
+          '-x',
+          '--exclude [XPATTERNS]',
           'exclude bookmarks or folders containing <KEYWORDS>'
-        ) { |xpatterns| options[:xpatterns] = xpatterns }
+        )
       end
 
       def self.banner(parser)
@@ -47,35 +55,34 @@ module Bkmrq
       end
 
       def self.version(parser)
-        parser.on('--version', '-v', 'Print Version') do
+        parser.on('-v', '--version', 'print bkmrq version') do
           puts "bkmrq v#{Bkmrq::VERSION}"
           exit
         end
       end
 
       def self.help(parser)
-        parser.on('--help', '-h', 'Print help docs') do
+        parser.on('-h', '--help', 'print bkmrq help docs') do
           puts parser
           exit
         end
       end
 
-      def self.generate_opt_parser(options)
+      def self.generate_opt_parser
         OptionParser.new do |parser|
           banner(parser)
-          filepath_opt(parser, options)
-          browser_opt(parser, options)
-          format_opt(parser, options)
-          exclude_patterns_opt(parser, options)
+          filepath_opt(parser)
+          browser_opt(parser)
+          format_opt(parser)
+          exclude_patterns_opt(parser)
           version(parser)
           help(parser)
         end
       end
 
-      def self.new
-        lambda do |parsed_set = {}|
-          parsed_set
-            .tap { |options| generate_opt_parser(options).parse!(ARGV) }
+      def self.parse!(parsed = {})
+        parsed.tap do |options|
+          generate_opt_parser.parse!(ARGV, into: options)
         end
       end
     end
