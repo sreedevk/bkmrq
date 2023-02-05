@@ -28,25 +28,33 @@ module Parsers
       end
     end
 
+    def traverse_directory(tree, cache)
+      cache.tap do |inst_cache|
+        inst_cache[tree['name']] = {}
+        tree['children'].each do |child|
+          traverse(child, inst_cache[tree['name']])
+        end
+      end
+    end
+
+    def traverse_url(tree, cache)
+      cache.tap do |inst_cache|
+        inst_cache[tree['name']] = Bkmrq::Bookmark.new(
+          url: tree['url'],
+          name: tree['name'],
+          created_at: Time.at(Integer(tree['date_added'])),
+          id: tree['id'],
+          guid: tree['guid']
+        )
+      end
+    end
+
     def traverse(tree, cache = {})
       case tree['type']
       when 'folder'
-        cache.tap do |inst_cache|
-          inst_cache[tree['name']] = {}
-          tree['children'].each do |child|
-            traverse(child, inst_cache[tree['name']])
-          end
-        end
+        traverse_directory(tree, cache)
       when 'url'
-        cache.tap do |inst_cache|
-          inst_cache[tree['name']] = Bkmrq::Bookmark.new(
-            url: tree['url'],
-            name: tree['name'],
-            created_at: Time.at(Integer(tree['date_added'])),
-            id: tree['id'],
-            guid: tree['guid']
-          )
-        end
+        traverse_url(tree, cache)
       end
     end
   end

@@ -17,9 +17,16 @@ Gem::Specification.new do |s|
   s.metadata = { 'source_code_uri' => 'https://github.com/sreedevk/bkmrq' }
   s.executables = ['bkmrq']
   s.require_paths = ['lib']
-  s.ruby_required_version = '>=3.0.0'
   s.files = [
     Dir['lib/**/*'].keep_if { |file| File.file?(file) },
     %w[Gemfile Gemfile.lock LICENSE README.md bkmrq.gemspec]
   ].flatten
+
+  # Dependencies
+  s.add_dependency 'oj', '~> 3.14.1'
+  s.add_dependency 'progress_bar', '~> 1.3.3'
+  s.add_development_dependency 'rspec', '~> 3.12.0'
+  s.add_development_dependency 'rubocop', '~> 1.43.0'
+  s.add_development_dependency 'rubocop-performance', '~> 1.15.2'
+  s.add_development_dependency 'rubocop-rspec', '~> 2.18.1'
 end

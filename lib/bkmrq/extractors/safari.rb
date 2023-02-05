@@ -14,7 +14,7 @@ module Extractors
     end
 
     def bookmarks_path
-      unless /darwin|mac os/i =~ RbConfig::CONFIG['host_os']
+      unless /darwin|mac os/i.match?(RbConfig::CONFIG['host_os'])
         raise Bkmrq::Extractors::Error, 'bkmrq does not support Safari on your OS'
       end
 

@@ -1,4 +1,4 @@
-name: Ruby Gem
+name: Bkmrq Publish
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build + Publish
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       contents: read
