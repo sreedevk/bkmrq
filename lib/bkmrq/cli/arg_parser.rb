@@ -55,7 +55,7 @@ module Bkmrq
 
       def self.help(parser)
         parser.on('--help', '-h', 'Print help docs') do
-          puts opts
+          puts parser
           exit
         end
       end

@@ -3,14 +3,15 @@
 module Bkmrq
   # Common Bookmark Format for All Browsers
   class Bookmark
-    attr_accessor :guid, :url, :name, :created_at, :id
+    attr_accessor :guid, :url, :name, :created_at, :id, :path
 
-    def initialize(url:, name:, created_at:, id:, guid: nil)
-      @guid = guid
-      @name = name
-      @url = url
-      @created_at = created_at
-      @id = id
+    def initialize(opts)
+      @guid = opts[:guid]
+      @name = opts[:name]
+      @path = opts[:path]
+      @url = opts[:url]
+      @created_at = opts[:created_at]
+      @id = opts[:id]
     end
   end
 end
