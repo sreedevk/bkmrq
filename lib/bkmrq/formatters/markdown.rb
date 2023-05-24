@@ -10,8 +10,7 @@ module Formatters
   # Markdown Formatter
   class Markdown
     def self.format(tree)
-      require 'pry'; binding.pry
-      # new.format([], tree)
+      new.format([], tree)
     end
 
     def format(page_cache, tree, level = 1)
