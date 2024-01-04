@@ -10,24 +10,36 @@ module Formatters
   # Markdown Formatter
   class Markdown
     def self.format(tree)
-      new.format([], tree)
+      new.format([], tree.values)
     end
 
     def format(page_cache, tree, level = 1)
-      if tree.is_a?(Bkmrq::Bookmark)
-        page_cache.push(Codegen::MarkdownGenerator.link(tree.name, tree.url))
-      else
-        tree.map do |name, subtree|
-          page_cache.push(Codegen::MarkdownGenerator.title(name, level))
-          format(page_cache, subtree, level.next)
+      page_cache.tap do |cache|
+        tree.each do |node|
+          if bookmark?(node)
+            cache.push(Codegen::MarkdownGenerator.link(node['name'], node['url']))
+          elsif folder?(node)
+            cache.push(Codegen::MarkdownGenerator.title(node['name'], level))
+            if node['children'].any?
+              format(cache, node['children'], level.next)
+            end
+          end
         end
       end
     end
 
     private
 
+    def bookmark?(node)
+      node['type'].eql?('url')
+    end
+
+    def folder?(node)
+      node['type'].eql?('folder')
+    end
+
     def add_doc_title(page_cache)
-      text = "#{ENV.fetch('USER', 'Bkmrq User')}'s Bookmarks"
+      text = "#{ENV.fetch('USER', 'Bkmrq User').capitalize}'s Bookmarks"
       page_cache.push(Codegen::MarkdownGenerator.title(text))
     end
 

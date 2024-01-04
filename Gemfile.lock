@@ -50,6 +50,8 @@ GEM
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.11.0)
+    rubytree (2.0.2)
+      json (~> 2.0, > 2.3.1)
     unicode-display_width (2.4.2)
 
 PLATFORMS
@@ -62,6 +64,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rspec
+  rubytree
 
 BUNDLED WITH
    2.3.26

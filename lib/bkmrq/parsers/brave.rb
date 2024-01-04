@@ -13,7 +13,7 @@ module Parsers
     end
 
     def run
-      Oj.load(rawdata)
+      Oj.load(rawdata).fetch("roots", {})
     end
   end
 end
