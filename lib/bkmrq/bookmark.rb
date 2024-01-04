@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 module Bkmrq
   # Common Bookmark Format for All Browsers
   class Bookmark

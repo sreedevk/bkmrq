@@ -304,7 +304,6 @@ Layout/AssignmentIndentation:
                 Checks the indentation of the first line of the
                 right-hand-side of a multi-line assignment.
   Enabled: true
-  SafeAutoCorrect: false
   VersionAdded: '0.49'
   VersionChanged: '1.40'
   IndentationWidth: ~
@@ -771,7 +770,6 @@ Layout/LineContinuationLeadingSpace:
                   broken over multiple lines (by a backslash).
   Enabled: true
   AutoCorrect: false
-  SafeAutoCorrect: false
   VersionAdded: '1.31'
   VersionChanged: '1.32'
   EnforcedStyle: trailing
@@ -783,7 +781,6 @@ Layout/LineContinuationSpacing:
   Description: 'Checks the spacing in front of backslash in line continuations.'
   Enabled: true
   AutoCorrect: true
-  SafeAutoCorrect: true
   VersionAdded: '1.31'
   EnforcedStyle: space
   SupportedStyles:
@@ -2184,7 +2181,6 @@ Lint/UselessRuby2Keywords:
 Lint/UselessSetterCall:
   Description: 'Checks for useless setter call to a local variable.'
   Enabled: true
-  SafeAutoCorrect: false
   VersionAdded: '0.13'
   VersionChanged: '1.2'
   Safe: false
@@ -2701,7 +2697,6 @@ Style/ArgumentsForwarding:
   Description: 'Use arguments forwarding.'
   StyleGuide: '#arguments-forwarding'
   Enabled: true
-  AllowOnlyRestArgument: true
   VersionAdded: '1.1'
 
 Style/ArrayCoercion:
@@ -3123,7 +3118,7 @@ Style/DocumentDynamicEvalDefinition:
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   AllowedConstants: []
   Exclude:
@@ -4093,7 +4088,6 @@ Style/NumericPredicate:
                  numeric comparisons.
   StyleGuide: '#predicate-methods'
   Safe: false
-  SafeAutoCorrect: false
   Enabled: true
   VersionAdded: '0.42'
   VersionChanged: '0.59'

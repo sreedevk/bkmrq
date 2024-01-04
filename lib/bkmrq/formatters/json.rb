@@ -3,7 +3,7 @@
 require_relative '../bookmark'
 
 module Formatters
-  # Markdown Formatter
+  # Json Formatter
   class Json
     def self.format(tree)
       new.format!(tree)

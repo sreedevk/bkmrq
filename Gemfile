@@ -6,8 +6,8 @@ gem 'oj'
 gem 'progress_bar'
 
 group :development do
-  gem 'rspec'
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rspec'
+  gem 'rspec', '~> 3.12.0'
+  gem 'rubocop', '~> 1.43.0'
+  gem 'rubocop-performance', '~> 1.15.2'
+  gem 'rubocop-rspec', '~> 2.18.1'
 end

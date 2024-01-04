@@ -25,8 +25,4 @@ Gem::Specification.new do |s|
   # Dependencies
   s.add_dependency 'oj', '~> 3.14.1'
   s.add_dependency 'progress_bar', '~> 1.3.3'
-  s.add_development_dependency 'rspec', '~> 3.12.0'
-  s.add_development_dependency 'rubocop', '~> 1.43.0'
-  s.add_development_dependency 'rubocop-performance', '~> 1.15.2'
-  s.add_development_dependency 'rubocop-rspec', '~> 2.18.1'
 end

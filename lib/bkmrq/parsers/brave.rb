@@ -13,7 +13,7 @@ module Parsers
     end
 
     def run
-      Oj.load(rawdata).fetch("roots", {}).then { |roots| parse(Bkmrq::BookmarkDir.new('*'), roots.values) }
+      Oj.load(rawdata).fetch('roots', {}).then { |roots| parse(Bkmrq::BookmarkDir.new('*'), roots.values) }
     end
 
     private
@@ -26,16 +26,24 @@ module Parsers
       node['type'].eql?('folder')
     end
 
+    def parse_bookmark(node, dir)
+      dir.add_child Bkmrq::Bookmark.new(node.slice('guid', 'name', 'url', 'date_added', 'id').transform_keys(&:to_sym))
+    end
+
+    def parse_folder(node, dir)
+      Bkmrq::BookmarkDir.new(node['name']).tap do |new_base_dir|
+        dir.add_child(new_base_dir)
+        parse(new_base_dir, node['children'])
+      end
+    end
+
     def parse(base_dir, tree)
       base_dir.tap do |dir|
         tree.map do |node|
           if bookmark?(node)
-            dir.add_child(Bkmrq::Bookmark.new(node.slice('guid', 'name', 'url', 'date_added', 'id').transform_keys(&:to_sym)))
-          elsif folder?(node) && node['children'].any? 
-            Bkmrq::BookmarkDir.new(node['name']).tap do |new_base_dir|
-              dir.add_child(new_base_dir)
-              parse(new_base_dir, node['children'])
-            end
+            parse_bookmark(node, dir)
+          elsif folder?(node) && node['children'].any?
+            parse_folder(node, dir)
           end
         end
       end

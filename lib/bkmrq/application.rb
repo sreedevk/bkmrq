@@ -2,11 +2,11 @@
 
 # Application Container
 module Bkmrq
-  require_relative './extractors/extractors'
-  require_relative './parsers/parsers'
-  require_relative './filter'
-  require_relative './formatters/formatters'
-  require_relative './writer'
+  require_relative 'extractors/extractors'
+  require_relative 'parsers/parsers'
+  require_relative 'filter'
+  require_relative 'formatters/formatters'
+  require_relative 'writer'
 
   # Application Core
   class Application

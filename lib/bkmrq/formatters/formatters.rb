@@ -2,10 +2,10 @@
 
 # Application root module
 module Bkmrq
-  require_relative './csv'
-  require_relative './html'
-  require_relative './json'
-  require_relative './markdown'
+  require_relative 'csv'
+  require_relative 'html'
+  require_relative 'json'
+  require_relative 'markdown'
 
   # Formats to markdown/html/toml/json
   class Formatters

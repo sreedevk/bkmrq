@@ -9,7 +9,6 @@ module Bkmrq
       new.filter(parsed_file, opts[:exclude])
     end
 
-    def filter(parsed_file, patterns)
-    end
+    def filter(parsed_file, patterns); end
   end
 end
