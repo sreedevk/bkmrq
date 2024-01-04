@@ -10,5 +10,17 @@ module Codegen
       level = 6 if level > 6
       "<h#{level}>#{text}</h#{level}>"
     end
+
+    def self.div(&block)
+      <<-HTML
+      <div>#{block.call}</div>
+      HTML
+    end
+
+    def self.paragraph(&block)
+      <<-HTML
+      <p>#{block.call}</p>
+      HTML
+    end
   end
 end
