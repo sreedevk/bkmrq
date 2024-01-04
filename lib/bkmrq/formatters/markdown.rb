@@ -25,7 +25,7 @@ module Formatters
             format(cache, child_node, level.next)
           end
         elsif node.is_a?(Bkmrq::Bookmark)
-          cache.push(Codegen::MarkdownGenerator.link(node.name, node.url))
+          cache.push(Codegen::MarkdownGenerator.line(Codegen::MarkdownGenerator.link(node.name, node.url)))
         else
           raise "Invalid IR Tree Node Detected: #{node.class}"
         end

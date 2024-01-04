@@ -57,6 +57,10 @@ module Codegen
       "[#{text}](#{url})"
     end
 
+    def self.line(text)
+      "#{text}  "
+    end
+
     def self.unordered_list(items)
       items
         .map { |item| "- #{item}" }
