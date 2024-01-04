@@ -1,6 +1,18 @@
 # bkmrq
 bkmrq `(pronounced bookmark)` is a command-line tool for organizing and transferring bookmarks across multiple browsers including Chrome, Firefox, Safari, and Opera. With just a few simple commands, export bookmarks in JSON, Markdown, CSV, and HTML formats. Ideal for automated scripts and command line users, it's fast and efficient. Specify format and location to easily transfer bookmarks, perfect for backups and sharing.
 
+# Disclaimer
+This project is still under development. If you would like to contribute, please checkout [CONTRIBUTING.md]().  
+Bkmrq Currently only supports the following browsers  
+- Brave (Default Profile Only)
+- Chromium (Default Profile Only)
+- Chrome (Default Profile Only)
+
+The following formats are supported for exporting bookmarks
+- markdown
+- json
+- html
+
 # Installation
 Running Bkmrq requires ruby installed (>= 3.0.0)
 
@@ -59,9 +71,4 @@ $ bkmrq -b brave -f markdown -o brave_bookmarks.md
 Export bookmarks from `Brave Browser` in `json` format to `brave_bookmarks.json` file  
 ```bash
 $ bkmrq -b brave -f json -o brave_bookmarks.json
-```
-
-Export bookmarks from `Firefox Browser` in `markdown` format to `firefox_bookmarks.md` file
-```
-$ bkmrq -b firefox -f markdown -o brave_bookmarks.md
 ```

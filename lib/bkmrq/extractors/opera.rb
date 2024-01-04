@@ -10,7 +10,7 @@ module Extractors
     end
 
     def extract
-      Oj.load(File.read(bookmarks_path))
+      File.read(bookmarks_path)
     end
 
     def bookmarks_path

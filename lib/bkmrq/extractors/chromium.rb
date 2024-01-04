@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'error'
+require 'pry'
 
 module Extractors
   # Chrome Bookmarks Extractor
@@ -10,7 +11,7 @@ module Extractors
     end
 
     def extract
-      Oj.load(File.read(bookmarks_path))
+      File.read(bookmarks_path)
     end
 
     def bookmarks_path
