@@ -11,15 +11,15 @@ module Codegen
       "<h#{level}>#{text}</h#{level}>"
     end
 
-    def self.div(&block)
+    def self.div
       <<-HTML
-      <div>#{block.call}</div>
+      <div>#{yield}</div>
       HTML
     end
 
-    def self.paragraph(&block)
+    def self.paragraph
       <<-HTML
-      <p>#{block.call}</p>
+      <p>#{yield}</p>
       HTML
     end
   end
