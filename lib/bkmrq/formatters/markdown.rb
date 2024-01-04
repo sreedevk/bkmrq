@@ -10,7 +10,11 @@ module Formatters
   # Markdown Formatter
   class Markdown
     def self.format(tree)
-      new.format([], tree)
+      new.format!(tree)
+    end
+
+    def format!(tree)
+      format((self.method(:add_doc_title) >> self.method(:add_header_image)).([]), tree)
     end
 
     def format(page_cache, node, level = 1)
@@ -36,7 +40,7 @@ module Formatters
     end
 
     def add_header_image(page_cache)
-      page_cache.push(Codegen::MarkdownGenerator.image(Assets::Images::LIBRARY, library))
+      page_cache.push(Codegen::MarkdownGenerator.image(Assets::Images::LIBRARY, "library"))
     end
   end
 end
