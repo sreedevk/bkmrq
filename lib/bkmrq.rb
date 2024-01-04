@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+# Main Application Namespace
 module Bkmrq
-  require 'bkmrq/app'
-  require 'bkmrq/browser_config'
-  require 'bkmrq/cli'
-  require 'bkmrq/docs_template'
-  require 'bkmrq/manual'
+  require 'bkmrq/cli/app'
+  VERSION = '0.1.1'
+
+  def self.init
+    Bkmrq::Cli::App.run!
+  end
 end

@@ -1,0 +1,35 @@
+name: Bkmrq Publish
+
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  test:
+    name: test_and_lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - name: Install dependencies
+        run: bundle install
+      - name: lint
+        run: bundle exec rubocop
+      - name: Run tests
+        run: bundle exec rspec
+  publish: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: publish_gem
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_AUTH_TOKEN}}
+          RELEASE_COMMAND: rake release
+        if: contains(github.ref, 'refs/tags/v')
+        uses: cadwallion/publish-rubygems-action@master

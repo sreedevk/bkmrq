@@ -18,6 +18,6 @@ namespace :bkmrq do
 
   desc 'clean generated files'
   task :clean do
-    sh('rm -rf bkmrq*.md')
+    sh('rm -rf bkmrq*.md *.gem bkmrq*.html')
   end
 end
