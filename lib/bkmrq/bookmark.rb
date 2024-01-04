@@ -29,5 +29,9 @@ module Bkmrq
     def add_child(child)
       @children << child
     end
+
+    def children?
+      @children.any?
+    end
   end
 end
