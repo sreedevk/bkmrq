@@ -50,3 +50,18 @@ Running Bkmrq requires ruby installed (>= 3.0.0)
 
 # Examples
 An example markdown file generated using this gemfile is available [here](https://github.com/sreedevk/bookmarks/blob/main/README.md)
+
+Export bookmarks from `Brave Browser` in `markdown` format to `brave_bookmarks.md` file  
+```bash
+$ bkmrq -b brave -f markdown -o brave_bookmarks.md
+```
+
+Export bookmarks from `Brave Browser` in `json` format to `brave_bookmarks.json` file  
+```bash
+$ bkmrq -b brave -f json -o brave_bookmarks.json
+```
+
+Export bookmarks from `Firefox Browser` in `markdown` format to `firefox_bookmarks.md` file
+```
+$ bkmrq -b firefox -f markdown -o brave_bookmarks.md
+```
